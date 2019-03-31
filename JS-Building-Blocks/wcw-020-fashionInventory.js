@@ -44,7 +44,21 @@ var inventory = [{
 }];
 
 function getLace(data) {
-	// answer
-}
+  let rgx = new RegExp(/(?:lace)+/g);
+  let result = [];
 
-getLace(inventory);
+  for (let i in data) {
+    for (let j in data[i].shoes) {
+      let shoeAr = data[i].shoes[j].name.split(" ");
+      shoeAr.map((w, idx) => {
+        if (rgx.test(w)) {
+          result.push({
+            nameWords: shoeAr,
+            targetWordIndex: idx
+          });
+        }
+      });
+    }
+  }
+  return result;
+}
