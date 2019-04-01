@@ -62,3 +62,5 @@ function getLace(data) {
   }
   return result;
 }
+
+getLace(inventory);
